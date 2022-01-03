@@ -3,7 +3,7 @@ import { Card, Row } from "react-bootstrap";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
 import { GetArticlesAsListItemsByTopicGuid } from "../app-services/mock-services/ArticleService";
-import ArticleAsListItem from "../models/ArticleAsListItem";
+import ArticleModel from "../models/ArticleModel";
 
 const ArticleList : React.FC = () => {
 
@@ -11,7 +11,7 @@ const ArticleList : React.FC = () => {
     const params = new URLSearchParams(location.search)
     const [topicGuid, setTopicGuid] = useState(params.get("topicguid"))
 
-    const [articleListItems, setArticleListItems] = useState<ArticleAsListItem[]>(null)
+    const [articleListItems, setArticleListItems] = useState<ArticleModel[]>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
     if(topicGuid != params.get("topicguid")) {
@@ -20,7 +20,7 @@ const ArticleList : React.FC = () => {
 
     useEffect(() => {
         GetArticlesAsListItemsByTopicGuid(topicGuid)
-            .then((data: ArticleAsListItem[]) => {
+            .then((data: ArticleModel[]) => {
                 setArticleListItems(data)
                 setLoading(false)
             })
@@ -43,9 +43,9 @@ const ArticleList : React.FC = () => {
         <div>
             {
                 articleListItems.map(item =>
-                    <Card key={item.ArticleAsListItemGuid} style={{ marginTop: '10px', marginLeft: '5px', marginRight: '5px', border: '2px solid lightgray' }}>
+                    <Card key={item.ArticleGuid} style={{ marginTop: '10px', marginLeft: '5px', marginRight: '5px', border: '2px solid lightgray' }}>
                         <Card.Body className="btn btn-secondary" style={{marginTop: '10px', marginBottom: '5px', marginLeft: '5px', marginRight: '5px', textAlign: "left"}}>
-                            <NavLink to={`/Article?articleguid=${item.ArticleAsListItemGuid}`} style={{ textDecoration: 'none' }}>
+                            <NavLink to={`/Article?articleguid=${item.ArticleGuid}`} style={{ textDecoration: 'none' }}>
                                 <h5 style={{ textDecoration: 'none', color: 'white' }}>{item.Name}</h5>
                             </NavLink>
                         </Card.Body>
