@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { GetArticleByGuid } from "../app-services/mock-services/ArticleService";
 import ArticleModel from "../models/ArticleModel";
-
+import ReactMarkdown from "react-markdown";
 
 const Article : React.FC = () => {
     let location = useLocation()
@@ -41,7 +41,7 @@ const Article : React.FC = () => {
         <>
             <div style={{ textAlign: "center" }}><h3>{article.Name}</h3></div>
             <hr />
-            {article.Content}
+            <ReactMarkdown>{article.Content}</ReactMarkdown>
             <hr />
             Written by <b>{article.Author}</b> on <b>{article.WrittenOn.toDateString()}</b>
         </>

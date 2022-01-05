@@ -1,4 +1,3 @@
-import Article from "../../app-components/Article";
 import ArticleModel from "../../models/ArticleModel";
 
 const mockArticles: ArticleModel[] = [
