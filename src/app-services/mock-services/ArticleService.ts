@@ -29,4 +29,17 @@ export async function GetArticlesAsListItemsByTopicGuid(topicGuid: string) : Pro
 
 export async function GetArticleByGuid(articleGuid: string) : Promise<ArticleModel> {
     return mockArticles.find(a => a.ArticleGuid === articleGuid)
+        ?? { ArticleGuid: null, Content: `A paragraph with *emphasis* and **strong importance**.
+
+        > A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+        
+        * Lists
+        * [ ] todo
+        * [x] done
+        
+        A table:
+        
+        | a | b |
+        | - | - |
+        `, Name: '', Author: '', WrittenOn: null, TopicGuid: null }
 }

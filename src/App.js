@@ -6,6 +6,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import HomePage from './app-components/HomePage';
 import ArticleList from './app-components/ArticleList';
 import Article from './app-components/Article';
+import AddEditArticle from './app-components/AddEditArticle';
 
 //DEBT: Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>. in developer tools console
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route exact path="/" element={<HomePage />}></Route>
             <Route exact path="/ArticleList" element={<ArticleList />}></Route>
             <Route exact path="/Article" element={<Article />}></Route>
+            <Route exact path="/AddEditArticle" element={<AddEditArticle />}></Route>
           </Routes>
         </Container>
     </BrowserRouter>
